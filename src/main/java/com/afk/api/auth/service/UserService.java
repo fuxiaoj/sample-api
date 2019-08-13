@@ -1,6 +1,6 @@
 package com.afk.api.auth.service;
 
-import com.afk.api.auth.entity.SysUser;
+import com.afk.api.auth.entity.User;
 
 import java.util.List;
 
@@ -9,14 +9,14 @@ import java.util.List;
  */
 public interface UserService {
 
-    List<SysUser> list();
+    List<User> list();
 
-    void save(SysUser user);
+    User save(User user);
 
-    void update(SysUser user);
+    User update(Integer id, User user);
 
-    SysUser getUserById(int id);
+    User getUserById(Integer id);
 
-    void delete(SysUser user);
+    void delete(Integer id);
 
 }

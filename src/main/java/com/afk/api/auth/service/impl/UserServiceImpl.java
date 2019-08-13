@@ -1,6 +1,6 @@
 package com.afk.api.auth.service.impl;
 
-import com.afk.api.auth.entity.SysUser;
+import com.afk.api.auth.entity.User;
 import com.afk.api.auth.repository.UserRepository;
 import com.afk.api.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +18,29 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public void save(SysUser user) {
-        userRepository.save(user);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
     @Override
-    public void update(SysUser user) {
-        userRepository.save(user);
+    public User update(Integer id, User user) {
+        User currentInstance = getUserById(id);
+        // 排除不更新字段、待写
+        return userRepository.save(currentInstance);
     }
 
     @Override
-    public SysUser getUserById(int id) {
+    public User getUserById(Integer id) {
         return userRepository.getOne(id);
     }
 
     @Override
-    public void delete(SysUser user) {
-        userRepository.delete(user);
+    public void delete(Integer id) {
+        userRepository.deleteById(id);
     }
 
     @Override
-    public List<SysUser> list() {
+    public List<User> list() {
         return userRepository.findAll();
     }
 }
