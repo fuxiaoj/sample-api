@@ -1,6 +1,6 @@
 package com.afk.api.auth.service.impl;
 
-import com.afk.api.auth.entity.SysToken;
+import com.afk.api.auth.entity.SessionToken;
 import com.afk.api.auth.repository.TokenRepository;
 import com.afk.api.auth.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class TokenServiceImpl implements TokenService {
     private TokenRepository tokenRepository;
 
     @Override
-    public SysToken getByToken(String token) {
+    public SessionToken getByToken(String token) {
         return tokenRepository.getByToken(token);
     }
 
     @Override
-    public void save(SysToken token) {
-        tokenRepository.save(token);
+    public SessionToken save(SessionToken token) {
+        return tokenRepository.save(token);
     }
 }

@@ -1,6 +1,6 @@
 package com.afk.api.config;
 
-import com.afk.api.auth.entity.SysToken;
+import com.afk.api.auth.entity.SessionToken;
 import com.afk.api.auth.service.TokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -28,8 +28,8 @@ public class SecurityFilter extends HandlerInterceptorAdapter {
         if (StringUtils.isBlank(token)) {
             throw new RuntimeException("请填写令牌！");
         }
-        SysToken sysToken = tokenService.getByToken(token);
-        if (sysToken == null) {
+        SessionToken sessionToken = tokenService.getByToken(token);
+        if (sessionToken == null) {
             throw new RuntimeException("令牌出错，请重新获取！");
         }
         return super.preHandle(request, response, handler);

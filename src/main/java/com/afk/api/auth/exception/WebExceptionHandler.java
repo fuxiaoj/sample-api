@@ -19,16 +19,14 @@ public class WebExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(WebExceptionHandler.class);
 
     @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseMessage runtimeException(RuntimeException e) {
         log.error("运行时发生异常", e);
-        return ResponseMessage.failed(e.getMessage());
+        return ResponseMessage.failed(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseMessage unknownException(Exception e) {
         log.error("发生了异常", e);
-        return ResponseMessage.failed("系统异常，请联系管理员");
+        return ResponseMessage.failed("系统异常，请联系管理员", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

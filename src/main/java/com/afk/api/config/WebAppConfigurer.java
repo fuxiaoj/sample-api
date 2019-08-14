@@ -19,6 +19,6 @@ public class WebAppConfigurer implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getSecurityFilter()).addPathPatterns("/**")
-                .excludePathPatterns("/token", "/**.html", "/webjars/**", "/swagger-resources/**");
+                .excludePathPatterns("/api/token", "/**.html", "/webjars/**", "/swagger-resources/**");
     }
 }
